@@ -22,6 +22,7 @@ import org.onosproject.netconf.NetconfDeviceInfo;
 import org.onosproject.netconf.NetconfException;
 import org.onosproject.netconf.NetconfSession;
 import org.onosproject.netconf.NetconfSessionFactory;
+import org.onosproject.netconf.config.NetconfSshClientLib;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +59,11 @@ public class DefaultNetconfDevice implements NetconfDevice {
         netconfDeviceInfo = deviceInfo;
         try {
             if (isMaster) {
-                netconfSession = new NetconfSessionMinaImpl(deviceInfo);
+                if (NetconfSshClientLib.ETHZ_SSH2.equals(netconfDeviceInfo.sshClientLib().orElse(null))) {
+                    netconfSession = new NetconfSessionEthzImpl(deviceInfo);
+                } else {
+                    netconfSession = new NetconfSessionMinaImpl(deviceInfo);
+                }
                 isMasterSession = true;
                 netconfProxySession = netconfSession;
             } else {

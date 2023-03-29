@@ -1,0 +1,19 @@
+/* css for Wavelength path topology overlay  */
+
+#ov-topo svg .linkLabel text {
+    font-size: 10pt;
+}
+#ov-topo svg .link.primary.master {
+    stroke-width: 6px;
+}
+#ov-topo svg .link.primary.master.selected,
+#ov-topo svg .link.primary.master.enhanced {
+    stroke: #009fdb
+}
+#ov-topo svg .link.secondary.recovery {
+    stroke-width: 5px;
+}
+#ov-topo svg .link.secondary.recovery.selected,
+#ov-topo svg .link.secondary.recovery.enhanced {
+    stroke: #009fdb
+}

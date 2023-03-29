@@ -339,6 +339,7 @@
     "stax2-api": "mvn:org.codehaus.woodstox:stax2-api:4.0.0",
     "concurrent-hashmap": "mvn:com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.0",
     "gnu-idn": "mvn:org.gnu.inet:libidn:1.15",
-    "sigar":"mvn:org.knowhowlab.osgi:sigar:1.6.5_01"
+    "sigar":"mvn:org.knowhowlab.osgi:sigar:1.6.5_01",
+    "velocity": "mvn:org.apache.velocity:velocity:jar:1.7"
   }
 }

@@ -1,5 +1,6 @@
 BUNDLES = [
     "@sshd_core//jar",
+    "@ganymed_ssh2//jar",
     "@jaxb_api//jar",
     "//providers/netconf/device:onos-providers-netconf-device",
     "//providers/netconf/alarm:onos-providers-netconf-alarm",
@@ -8,7 +9,6 @@ BUNDLES = [
 ]
 
 EXCLUDED_BUNDLES = [
-    "@ganymed_ssh2//jar",
 ]
 
 onos_app(

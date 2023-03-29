@@ -780,7 +780,8 @@ public class NetconfControllerImpl implements NetconfController {
                 throws NetconfException {
             if (isMaster) {
                 log.info("Creating NETCONF session to {} with {}",
-                         netconfDeviceInfo.getDeviceId(), NetconfSshClientLib.APACHE_MINA);
+                         netconfDeviceInfo.getDeviceId(),
+                         netconfDeviceInfo.sshClientLib().orElse(NetconfSshClientLib.APACHE_MINA));
             }
             return new DefaultNetconfDevice(netconfDeviceInfo, isMaster, NetconfControllerImpl.this);
         }

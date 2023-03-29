@@ -1,0 +1,64 @@
+<div id="ov-wavelength-path-table-item-details-panel"
+     class="floatpanel" [@wavelengthPathDetailsState]="id!=='' && !closed">
+  <div class="container">
+    <div class="top">
+      <div class="close-btn">
+        <onos-icon class="close-btn" classes="active-close" iconId="close" iconSize="20" (click)="close()"></onos-icon>
+      </div>
+      <div class="top-content">
+        <div class="top-tables">
+          <div class="left">
+            <table>
+              <tbody>
+              <tr>
+                <td class="label" width="110">ID</td>
+                <td class="value" width="320">{{detailsData.id}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">TP 1</td>
+                <td class="value" width="320">{{detailsData.tp1}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">TP 2</td>
+                <td class="value" width="320">{{detailsData.tp2}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Path</td>
+                <td class="value" width="320">{{detailsData.path}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Name</td>
+                <td class="value" width="320">{{detailsData.name}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Frequency</td>
+                <td class="value" width="320">{{detailsData.frequency}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Q value</td>
+                <td class="value" width="320">{{detailsData.qvalue}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Q margin</td>
+                <td class="value" width="320">{{detailsData.qmargin}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Submit ID</td>
+                <td width="320">{{detailsData.submitId}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">Redundancy</td>
+                <td width="320">{{detailsData.redundancy}}</td>
+              </tr>
+              <tr>
+                <td class="label" width="110">State</td>
+                <td class="value" width="320">{{detailsData.state}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

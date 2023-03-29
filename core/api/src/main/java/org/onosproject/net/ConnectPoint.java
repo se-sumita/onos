@@ -16,6 +16,8 @@
 package org.onosproject.net;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -32,6 +34,14 @@ public class ConnectPoint implements Comparable<ConnectPoint> {
     private static final String SEP_NO_VALUE =
         "Connect point separator specified, but no port number included, connect point must "
             + " be in \"deviceUri/portNumber\" format";
+
+    /**
+     * Regular expression to match String representation of named PortNumber.
+     *
+     * Format: "[name](num:unsigned decimal string)"
+     */
+    private static final Pattern DEVICE_NAMED_PORT = Pattern.compile(
+            "^(?<device>.*)/(?<port>[\\[(].*[\\])]\\(\\d+\\))$");
 
 
     private final ElementId elementId;
@@ -134,6 +144,14 @@ public class ConnectPoint implements Comparable<ConnectPoint> {
          * from the connection point number.
          */
         checkNotNull(string);
+
+        Matcher matcher = DEVICE_NAMED_PORT.matcher(string);
+        if (matcher.matches()) {
+            String id = matcher.group("device");
+            String cp = matcher.group("port");
+            return new ConnectPoint(DeviceId.deviceId(id), PortNumber.fromString(cp));
+        }
+
         int idx = string.lastIndexOf("/");
         checkArgument(idx != -1, NO_SEP_SPECIFIED);
 
@@ -181,7 +199,10 @@ public class ConnectPoint implements Comparable<ConnectPoint> {
          * from the connection point number.
          */
         checkNotNull(string);
-        int idx = string.lastIndexOf("/");
+        int idx = string.lastIndexOf("/[");
+        if (idx < 0) {
+            idx = string.lastIndexOf("/");
+        }
         checkArgument(idx != -1, NO_SEP_SPECIFIED);
 
         String id = string.substring(0, idx);

@@ -19,7 +19,8 @@ package org.onosproject.netconf.config;
  * Enumerated list of SSH client library types.
  */
 public enum NetconfSshClientLib {
-    APACHE_MINA("apache-mina");
+    APACHE_MINA("apache-mina"),
+    ETHZ_SSH2("ethz-ssh2");
 
     private String impl;
 

@@ -1,0 +1,17 @@
+{
+  "ietf-network:network": [
+    {
+      "network-types": {
+        "org-openroadm-network:openroadm-network": {
+        },
+        "org-openroadm-network-topology:openroadm-topology": {
+        },
+        "org-openroadm-clli-network:clli-network": {
+
+        }
+      },
+      "network-id": "openroadm",
+      "server-provided": true
+    }
+  ]
+}

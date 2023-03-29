@@ -117,6 +117,11 @@ const onosRoutes: Route[] = [
         loadChildren: () => import('../../../../../../apps/yang-gui/yang-gui2-lib/lib/yang-gui2-lib.module').then(m => m.YangGui2LibModule)
     },
     <Route>{
+        path: 'wavelengthPaths',
+        pathMatch: 'full',
+        loadChildren: () => import('../../../../../../apps/opticalpathoptimizer/wlpath-gui2-lib/lib/wlpath-gui2-lib.module').then(m => m.WavelengthPathsGui2LibModule)
+    },
+    <Route>{
         path: 'intApp',
         pathMatch: 'prefix',
         loadChildren: () => import('../../../../../../apps/inbandtelemetry/intApp-gui2/intApp/lib/intapp-gui2-lib.module').then(m => m.intAppGui2LibModule)

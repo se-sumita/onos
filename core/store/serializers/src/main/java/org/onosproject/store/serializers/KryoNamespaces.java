@@ -214,6 +214,11 @@ import org.onosproject.net.meter.MeterCellId;
 import org.onosproject.net.meter.MeterCellId.MeterCellType;
 import org.onosproject.net.meter.MeterFailReason;
 import org.onosproject.net.meter.MeterId;
+import org.onosproject.net.openroadm.flow.instructions.TransponderInstruction;
+import org.onosproject.net.openroadm.intent.WavelengthPathIntent;
+import org.onosproject.net.openroadm.model.ModulationFormat;
+import org.onosproject.net.openroadm.model.Rate;
+import org.onosproject.net.openroadm.model.WavelengthPath;
 import org.onosproject.net.packet.DefaultOutboundPacket;
 import org.onosproject.net.packet.DefaultPacketRequest;
 import org.onosproject.net.packet.PacketPriority;
@@ -629,7 +634,12 @@ public final class KryoNamespaces {
                     NextObjective.Type.class,
                     Objective.Operation.class,
                     DefaultObjectiveContext.class,
-                    ObjectiveError.class
+                    ObjectiveError.class,
+                    WavelengthPath.class,
+                    WavelengthPathIntent.class,
+                    TransponderInstruction.class,
+                    ModulationFormat.class,
+                    Rate.class
             )
             .register(new DefaultApplicationIdSerializer(), DefaultApplicationId.class)
             .register(new UriSerializer(), URI.class)

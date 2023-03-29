@@ -43,7 +43,7 @@ public class LinkSrcCompleter extends AbstractCompleter {
         SortedSet<String> strings = delegate.getStrings();
         service.getLinks()
                 .forEach(link -> strings.add(link.src().elementId().toString() +
-                                                     "/" + link.src().port()));
+                                                     "/" + link.src().port().toStringForShell()));
 
         // Now let the completer do the work for figuring out what to offer.
         return delegate.complete(session, commandLine, candidates);

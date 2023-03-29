@@ -1,0 +1,81 @@
+<!-- partial HTML -->
+<div id="ov-wavelength-paths-table">
+    <div class="tabular-header">
+        <h2>Wavelength Paths ({{tableData.length}} total)</h2>
+        <div class="ctrl-btns">
+            <div class="refresh" ng-class="{active: autoRefresh}"
+                 icon icon-id="refresh" icon-size="36"
+                 tooltip tt-msg="autoRefreshTip"
+                 ng-click="toggleRefresh()"></div>
+
+            <div class="separator"></div>
+
+            <div class="show-topology-btn">
+                <div class="icon-text">(single)</div>
+                <div ng-class="{active: canShowTopology()}"
+                     icon icon-id="topo" icon-size="42"
+                     tooltip tt-msg="topoTip"
+                     ng-click="showWavelengthPathTopology()">
+                </div>
+            </div>
+            <div class="show-topology-btn">
+                <div ng-class="{active: canShowTopology()}"
+                     icon icon-id="topo" icon-size="42"
+                     tooltip tt-msg="topoTip2"
+                     ng-click="showWavelengthPathsTopology()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary-list" onos-table-resize>
+
+        <div class="table-header" onos-sortable-header>
+            <table>
+                <tr>
+                    <td colId="id" sortable col-width="50px">ID</td>
+                    <td colId="tp1" sortable>TP1</td>
+                    <td colId="path">ROADM Path</td>
+                    <td colId="tp2" sortable>TP2</td>
+                    <td colId="name" sortable col-width="200px">NAME</td>
+                    <td colId="frequency" sortable>Frequency</td>
+                    <td colId="qvalue" sortable col-width="100px">Q-Value</td>
+                    <td colId="qmargin" sortable col-width="100px">Q-Margin</td>
+                    <td colId="redundancy" sortable>Redundancy ID</td>
+                    <td colId="state" sortable>STATE</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-body">
+            <table>
+                <tr ng-if="!tableData.length" class="no-data">
+                    <td colspan="8">
+                        {{annots.no_rows_msg}}
+                    </td>
+                </tr>
+
+                <tr ng-repeat="item in tableData track by $index"
+                    ng-click="selectCallback($event, item)"
+                    ng-class="{selected: item.id === selId}">
+                    <td ng-click="jumpTopology($event, item, false)" class="clickable">{{item.id}}</td>
+                    <td>{{item.tp1}}</td>
+                    <td>{{item.path}}</td>
+                    <td>{{item.tp2}}</td>
+                    <td>{{item.name}}</td>
+                    <td>[{{item.channel}}] {{item.frequency}} THz</td>
+                    <td>{{item.qvalue | number:3}}</td>
+                    <td>{{item.qmargin | number:3}}</td>
+                    <td ng-if="item.redundancy == 'YES'" ng-click="jumpTopology($event, item, true)" class="clickable">
+                        {{item.submitId}}
+                    </td>
+                    <td ng-if="item.redundancy != 'YES'">-</td>
+                    <td>{{item.state}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <ov-wavelength-paths-item-details-panel></ov-wavelength-paths-item-details-panel>
+</div>

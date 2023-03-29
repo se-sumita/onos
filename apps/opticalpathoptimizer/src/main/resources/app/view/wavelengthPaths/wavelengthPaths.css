@@ -1,0 +1,56 @@
+/* css for wavelength path table view */
+
+#ov-wavelength-paths-table h2 {
+    display: inline-block;
+}
+
+#ov-wavelength-paths-table td {}
+
+/* Panel Styling */
+#ov-wavelength-paths-item-details-panel.floatpanel {
+    position: absolute;
+    top: 125px;
+    padding: 20px;
+}
+
+.light #ov-wavelength-paths-item-details-panel.floatpanel {
+    background-color: white;
+}
+.dark #ov-wavelength-paths-item-details-panel.floatpanel {
+    background-color: #3A4042;
+}
+
+#ov-wavelength-paths-item-details-panel h3 {
+    margin: 0;
+    font-size: large;
+}
+
+#ov-wavelength-paths-item-details-panel h4 {
+    margin: 0;
+}
+
+#ov-wavelength-paths-item-details-panel td {
+    padding: 5px;
+    white-space: pre-wrap;
+}
+#ov-wavelength-paths-item-details-panel td.label {
+    font-style: italic;
+    opacity: 0.8;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+#ov-wavelength-paths-table div.summary-list .table-body td {
+    cursor: default;
+}
+#ov-wavelength-paths-table div.summary-list .table-body td.clickable {
+    cursor: pointer;
+}
+#ov-wavelength-paths-table .icon-text {
+    position:absolute;
+    font-size:7px;
+    top:-8px;
+    width:42px;
+    text-align:center;
+    color:#999;
+}

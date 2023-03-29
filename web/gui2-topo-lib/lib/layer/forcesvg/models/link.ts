@@ -54,7 +54,10 @@ export class Link implements UiElement, d3.SimulationLinkDatum<Node> {
     target: Node;
 
     public static deviceNameFromEp(ep: string): string {
-        if (ep !== undefined && ep.lastIndexOf('/') > 0) {
+        if (ep !== undefined && ep.match(/^(.+)\/[\[(].+[\])].*/)) {
+            // parse "device/[port](num)" or "device/(port)(num)" format.
+            return RegExp.$1;
+        } else if (ep !== undefined && ep.lastIndexOf('/') > 0) {
             return ep.substr(0, ep.lastIndexOf('/'));
         }
         return ep;

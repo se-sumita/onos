@@ -166,7 +166,7 @@ public final class PortNumber {
         if (isAsciiDecimal(s.charAt(0))) {
             // unsigned decimal string
             return portNumber(s);
-        } else if (s.startsWith("[")) {
+        } else if (s.startsWith("[") || s.startsWith("(")) {
             // named PortNumber
             Matcher matcher = NAMED.matcher(s);
             checkArgument(matcher.matches(), "Invalid named PortNumber %s", s);
@@ -250,7 +250,7 @@ public final class PortNumber {
      *
      * Format: "[name](num:unsigned decimal string)"
      */
-    private static final Pattern NAMED = Pattern.compile("^\\[(?<name>.*)\\]\\((?<num>\\d+)\\)$");
+    private static final Pattern NAMED = Pattern.compile("^[\\[(](?<name>.*)[\\])]\\((?<num>\\d+)\\)$");
 
     private static boolean isAsciiDecimal(char c) {
         return '0' <= c  && c <= '9';
@@ -266,6 +266,22 @@ public final class PortNumber {
                 return String.format("[%s]", name);
             } else {
                 return String.format("[%s](%d)", name, number);
+            }
+        } else {
+            // unsigned decimal string
+            return name;
+        }
+    }
+
+    public String toStringForShell() {
+        if (isLogical()) {
+            return decodeLogicalPortExtended();
+        } else if (hasName()) {
+            // named port
+            if (number == NO_DISPLAY_NUMBER) {
+                return String.format("(%s)", name);
+            } else {
+                return String.format("(%s)(%d)", name, number);
             }
         } else {
             // unsigned decimal string

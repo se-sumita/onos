@@ -46,7 +46,7 @@ public class ConnectPointCompleter implements Completer {
             SortedSet<String> strings = delegate.getStrings();
             for (Port port : service.getPorts(device.id())) {
                 if (!port.number().isLogical()) {
-                    strings.add(device.id().toString() + "/" + port.number());
+                    strings.add(device.id().toString() + "/" + port.number().toStringForShell());
                 }
             }
         }

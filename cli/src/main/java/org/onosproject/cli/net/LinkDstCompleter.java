@@ -49,7 +49,7 @@ public class LinkDstCompleter extends AbstractCompleter {
             ConnectPoint src = ConnectPoint.deviceConnectPoint(srcArg);
             service.getEgressLinks(src)
                     .forEach(link -> strings.add(link.dst().elementId().toString() +
-                                                         "/" + link.dst().port()));
+                                                         "/" + link.dst().port().toStringForShell()));
         } catch (NumberFormatException e) {
             System.err.println("Invalid connect-point");
         }

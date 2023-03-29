@@ -1342,6 +1342,12 @@ def generated_maven_jars():
             jar_sha256 = "5107e6b19b1d0ff2cfcd3baf0c25f0d444330273b1f2bec710e127c733f11455",
             licenses = ["notice"],
             jar_urls = ["https://repo1.maven.org/maven2/org/knowhowlab/osgi/sigar/1.6.5_01/sigar-1.6.5_01.jar"],        )
+    if "velocity" not in native.existing_rules():
+        java_import_external(
+            name = "velocity",
+            jar_sha256 = "ec92dae810034f4b46dbb16ef4364a4013b0efb24a8c5dd67435cae46a290d8e",
+            licenses = ["notice"],
+            jar_urls = ["https://repo1.maven.org/maven2/org/apache/velocity/velocity/1.7/velocity-1.7.jar"],        )
 artifact_map = {}
 artifact_map["@aopalliance_repackaged//:aopalliance_repackaged"] = "mvn:org.glassfish.hk2.external:aopalliance-repackaged:jar:2.5.0-b42"
 artifact_map["@amqp_client//:amqp_client"] = "mvn:com.rabbitmq:amqp-client:jar:3.6.1"
@@ -1546,6 +1552,7 @@ artifact_map["@stax2_api//:stax2_api"] = "mvn:org.codehaus.woodstox:stax2-api:ja
 artifact_map["@concurrent_hashmap//:concurrent_hashmap"] = "mvn:com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:jar:NON-OSGI:1.0"
 artifact_map["@gnu_idn//:gnu_idn"] = "mvn:org.gnu.inet:libidn:jar:NON-OSGI:1.15"
 artifact_map["@sigar//:sigar"] = "mvn:org.knowhowlab.osgi:sigar:jar:1.6.5_01"
+artifact_map["@velocity//:velocity"] = "mvn:org.apache.velocity:velocity:jar:1.7"
 
 def maven_coordinates(label):
     label_string = str(label)

@@ -64,6 +64,7 @@ ts_library(
         "//apps/faultmanagement/fm-gui2-lib:fm-gui2-lib",
         "//apps/roadm/web/roadm-gui:roadm-gui",
         "//apps/yang-gui/yang-gui2-lib:yang-gui2-lib",
+        "//apps/opticalpathoptimizer/wlpath-gui2-lib:wlpath-gui2-lib",
         "//apps/inbandtelemetry/intApp-gui2/intApp:intapp-gui2-lib",
         "@npm//@angular/core",
         "@npm//@angular/common",
